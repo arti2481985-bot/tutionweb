@@ -1,0 +1,3270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>S & S Study Point | ICSE Coaching</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#06050d;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* =========================================================
+   CUSTOM SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#070610;
+}
+
+::-webkit-scrollbar-thumb{
+    background:linear-gradient(
+        #8b5cf6,
+        #ff4ecd,
+        #ff9f43
+    );
+    border-radius:20px;
+}
+
+/* =========================================================
+   LOADING SCREEN
+========================================================= */
+
+.loader{
+    position:fixed;
+    inset:0;
+    background:#06050d;
+    z-index:99999;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    transition:1s;
+}
+
+.loader-logo{
+    font-size:60px;
+    font-weight:900;
+
+    background:linear-gradient(
+        90deg,
+        #8b5cf6,
+        #ff4ecd,
+        #ff9f43,
+        #ffd166
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    animation:loaderPulse 1.5s infinite;
+}
+
+.loader p{
+    margin-top:15px;
+    color:#aaa;
+    letter-spacing:4px;
+    font-size:12px;
+}
+
+.loader-line{
+    width:180px;
+    height:3px;
+    margin-top:25px;
+    overflow:hidden;
+    background:#222;
+    border-radius:10px;
+}
+
+.loader-line::after{
+    content:"";
+    display:block;
+    width:50%;
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        #8b5cf6,
+        #ff4ecd,
+        #ff9f43
+    );
+
+    animation:loaderLine 1.5s infinite;
+}
+
+@keyframes loaderPulse{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.08);
+    }
+
+}
+
+@keyframes loaderLine{
+
+    0%{
+        transform:translateX(-100%);
+    }
+
+    100%{
+        transform:translateX(300%);
+    }
+
+}
+
+/* =========================================================
+   BACKGROUND GLOWS
+========================================================= */
+
+body::before{
+    content:"";
+    position:fixed;
+
+    width:500px;
+    height:500px;
+
+    left:-200px;
+    top:-150px;
+
+    background:#8b5cf6;
+
+    filter:blur(180px);
+
+    opacity:.20;
+
+    z-index:-10;
+
+    animation:backgroundMove 12s infinite alternate;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+
+    width:500px;
+    height:500px;
+
+    right:-200px;
+    bottom:-200px;
+
+    background:#ff4ecd;
+
+    filter:blur(180px);
+
+    opacity:.16;
+
+    z-index:-10;
+
+    animation:backgroundMove2 14s infinite alternate;
+}
+
+@keyframes backgroundMove{
+
+    from{
+        transform:translate(0,0);
+    }
+
+    to{
+        transform:translate(300px,250px);
+    }
+
+}
+
+@keyframes backgroundMove2{
+
+    from{
+        transform:translate(0,0);
+    }
+
+    to{
+        transform:translate(-300px,-200px);
+    }
+
+}
+
+/* =========================================================
+   MOVING GRID
+========================================================= */
+
+.grid-background{
+
+    position:fixed;
+
+    inset:0;
+
+    background-image:
+    linear-gradient(
+        rgba(255,255,255,.025) 1px,
+        transparent 1px
+    ),
+    linear-gradient(
+        90deg,
+        rgba(255,255,255,.025) 1px,
+        transparent 1px
+    );
+
+    background-size:60px 60px;
+
+    mask-image:linear-gradient(
+        to bottom,
+        black,
+        transparent
+    );
+
+    pointer-events:none;
+
+    z-index:-8;
+}
+
+/* =========================================================
+   FLOATING PARTICLES
+========================================================= */
+
+.particles{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-5;
+}
+
+.particle{
+    position:absolute;
+
+    width:4px;
+    height:4px;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    opacity:.35;
+
+    animation:particleFloat linear infinite;
+}
+
+@keyframes particleFloat{
+
+    from{
+        transform:translateY(110vh);
+    }
+
+    to{
+        transform:translateY(-10vh);
+    }
+
+}
+
+/* =========================================================
+   CURSOR GLOW
+========================================================= */
+
+.cursor-glow{
+
+    position:fixed;
+
+    width:180px;
+    height:180px;
+
+    border-radius:50%;
+
+    background:radial-gradient(
+        circle,
+        rgba(255,78,205,.16),
+        transparent 70%
+    );
+
+    pointer-events:none;
+
+    transform:translate(-50%,-50%);
+
+    z-index:9998;
+
+}
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+nav{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+
+    padding:18px 7%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:rgba(6,5,13,.68);
+
+    backdrop-filter:blur(20px);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+    z-index:1000;
+
+    transition:.4s;
+
+}
+
+nav.scrolled{
+
+    padding:12px 7%;
+
+    background:rgba(6,5,13,.9);
+
+    box-shadow:
+    0 10px 40px rgba(0,0,0,.4);
+
+}
+
+/* LOGO */
+
+.logo{
+
+    font-size:27px;
+
+    font-weight:900;
+
+    background:linear-gradient(
+        90deg,
+        #8b5cf6,
+        #ff4ecd,
+        #ff9f43
+    );
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+    letter-spacing:2px;
+
+    animation:logoGlow 3s infinite alternate;
+
+}
+
+@keyframes logoGlow{
+
+    from{
+        filter:drop-shadow(
+            0 0 0 transparent
+        );
+    }
+
+    to{
+        filter:drop-shadow(
+            0 0 12px rgba(255,78,205,.5)
+        );
+    }
+
+}
+
+.logo span{
+    color:white;
+    -webkit-text-fill-color:white;
+}
+
+nav ul{
+
+    display:flex;
+
+    gap:25px;
+
+    list-style:none;
+
+}
+
+nav ul li a{
+
+    position:relative;
+
+    color:#ccc;
+
+    text-decoration:none;
+
+    font-size:14px;
+
+    transition:.3s;
+
+}
+
+nav ul li a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-7px;
+
+    width:0;
+    height:2px;
+
+    background:linear-gradient(
+        90deg,
+        #8b5cf6,
+        #ff4ecd
+    );
+
+    transition:.3s;
+
+}
+
+nav ul li a:hover{
+    color:white;
+}
+
+nav ul li a:hover::after{
+    width:100%;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:60px;
+
+    padding:150px 8% 100px;
+
+    position:relative;
+
+}
+
+/* HERO LIGHT */
+
+.hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:400px;
+    height:400px;
+
+    background:#8b5cf6;
+
+    filter:blur(180px);
+
+    opacity:.13;
+
+    left:20%;
+    top:30%;
+
+    z-index:-1;
+
+    animation:heroLight 6s infinite alternate;
+
+}
+
+@keyframes heroLight{
+
+    from{
+        transform:scale(1);
+    }
+
+    to{
+        transform:scale(1.5);
+    }
+
+}
+
+/* HERO TEXT */
+
+.hero-text{
+
+    max-width:700px;
+
+    animation:heroEnter 1.2s ease;
+
+}
+
+@keyframes heroEnter{
+
+    from{
+        opacity:0;
+        transform:translateX(-70px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateX(0);
+    }
+
+}
+
+.small-title{
+
+    display:inline-block;
+
+    padding:9px 17px;
+
+    border-radius:30px;
+
+    background:rgba(139,92,246,.10);
+
+    border:1px solid rgba(139,92,246,.45);
+
+    color:#cdbbff;
+
+    font-size:12px;
+
+    letter-spacing:3px;
+
+    margin-bottom:25px;
+
+    animation:titlePulse 3s infinite;
+
+}
+
+@keyframes titlePulse{
+
+    0%,100%{
+        box-shadow:0 0 0 rgba(139,92,246,0);
+    }
+
+    50%{
+        box-shadow:
+        0 0 30px rgba(139,92,246,.2);
+    }
+
+}
+
+.hero h1{
+
+    font-size:clamp(
+        42px,
+        6vw,
+        78px
+    );
+
+    line-height:1.05;
+
+    margin-bottom:25px;
+
+}
+
+.hero h1 span{
+
+    background:linear-gradient(
+        90deg,
+        #8b5cf6,
+        #ff4ecd,
+        #ff9f43,
+        #ffd166,
+        #8b5cf6
+    );
+
+    background-size:400% 400%;
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+    animation:
+    gradientMove 6s infinite,
+    textGlow 3s infinite alternate;
+
+}
+
+@keyframes gradientMove{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+
+}
+
+@keyframes textGlow{
+
+    from{
+        filter:drop-shadow(
+            0 0 0 transparent
+        );
+    }
+
+    to{
+        filter:drop-shadow(
+            0 0 15px rgba(255,78,205,.3)
+        );
+    }
+
+}
+
+.hero p{
+
+    color:#bcb7c9;
+
+    line-height:1.9;
+
+    font-size:17px;
+
+    margin-bottom:35px;
+
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.buttons{
+
+    display:flex;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+}
+
+.btn{
+
+    position:relative;
+
+    padding:14px 25px;
+
+    border-radius:13px;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    overflow:hidden;
+
+    transition:.35s;
+
+}
+
+.btn::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-120%;
+
+    width:100%;
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.25),
+        transparent
+    );
+
+    transition:.6s;
+
+}
+
+.btn:hover::before{
+    left:120%;
+}
+
+.primary{
+
+    color:white;
+
+    background:linear-gradient(
+        135deg,
+        #8b5cf6,
+        #ff4ecd
+    );
+
+    box-shadow:
+    0 10px 30px rgba(139,92,246,.25);
+
+}
+
+.primary:hover{
+
+    transform:
+    translateY(-6px)
+    scale(1.04);
+
+    box-shadow:
+    0 20px 50px rgba(255,78,205,.3);
+
+}
+
+.secondary{
+
+    color:white;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.18);
+
+    backdrop-filter:blur(10px);
+
+}
+
+.secondary:hover{
+
+    transform:translateY(-6px);
+
+    border-color:#ff9f43;
+
+    box-shadow:
+    0 10px 30px rgba(255,159,67,.2);
+
+}
+
+/* =========================================================
+   HERO CARD
+========================================================= */
+
+.hero-card{
+
+    width:390px;
+
+    min-height:440px;
+
+    padding:35px;
+
+    border-radius:32px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    position:relative;
+
+    background:
+    linear-gradient(
+        145deg,
+        rgba(139,92,246,.14),
+        rgba(255,78,205,.08),
+        rgba(255,159,67,.06)
+    );
+
+    border:1px solid rgba(255,255,255,.12);
+
+    backdrop-filter:blur(25px);
+
+    box-shadow:
+    0 30px 80px rgba(0,0,0,.45);
+
+    animation:
+    floatCard 5s ease-in-out infinite;
+
+    transform-style:preserve-3d;
+
+}
+
+.hero-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-2px;
+
+    border-radius:32px;
+
+    padding:2px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #8b5cf6,
+        transparent,
+        #ff4ecd,
+        transparent,
+        #ff9f43
+    );
+
+    background-size:300% 300%;
+
+    animation:borderMove 5s linear infinite;
+
+    -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite:xor;
+
+    mask-composite:exclude;
+
+    pointer-events:none;
+
+}
+
+@keyframes borderMove{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    100%{
+        background-position:300% 50%;
+    }
+
+}
+
+@keyframes floatCard{
+
+    0%,100%{
+        transform:translateY(0) rotateY(0deg);
+    }
+
+    50%{
+        transform:translateY(-18px) rotateY(3deg);
+    }
+
+}
+
+.logo-circle{
+
+    width:165px;
+
+    height:165px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:
+    linear-gradient(
+        135deg,
+        #8b5cf6,
+        #ff4ecd,
+        #ff9f43
+    );
+
+    box-shadow:
+    0 0 35px rgba(255,78,205,.35),
+    0 0 70px rgba(139,92,246,.25);
+
+    margin-bottom:25px;
+
+    animation:
+    circlePulse 3s infinite,
+    circleRotate 12s linear infinite;
+
+}
+
+@keyframes circlePulse{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.07);
+    }
+
+}
+
+@keyframes circleRotate{
+
+    from{
+        box-shadow:
+        0 0 35px rgba(255,78,205,.35),
+        0 0 70px rgba(139,92,246,.25);
+    }
+
+    50%{
+        box-shadow:
+        0 0 70px rgba(255,159,67,.45),
+        0 0 110px rgba(255,78,205,.2);
+    }
+
+    to{
+        box-shadow:
+        0 0 35px rgba(255,78,205,.35),
+        0 0 70px rgba(139,92,246,.25);
+    }
+
+}
+
+.logo-circle span{
+
+    font-size:45px;
+
+    font-weight:900;
+
+}
+
+.hero-card h2{
+    text-align:center;
+}
+
+.hero-card p{
+    color:#aaa;
+    margin-top:8px;
+}
+
+.chips{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:10px;
+
+    margin-top:25px;
+
+}
+
+.chip{
+
+    padding:8px 14px;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,.07);
+
+    border:1px solid rgba(255,255,255,.1);
+
+    font-size:12px;
+
+    transition:.3s;
+
+}
+
+.chip:hover{
+
+    transform:
+    translateY(-5px)
+    scale(1.05);
+
+    background:
+    rgba(255,78,205,.15);
+
+    border-color:#ff4ecd;
+
+    box-shadow:
+    0 5px 20px rgba(255,78,205,.2);
+
+}
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+section{
+
+    padding:120px 8%;
+
+    position:relative;
+
+}
+
+.section-title{
+
+    text-align:center;
+
+    margin-bottom:65px;
+
+    opacity:0;
+
+    transform:translateY(40px);
+
+    transition:1s;
+
+}
+
+.section-title.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+.section-title h2{
+
+    font-size:45px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #8b5cf6,
+        #ff4ecd,
+        #ff9f43
+    );
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+}
+
+.section-title p{
+
+    color:#9e98aa;
+
+    margin-top:10px;
+
+}
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about{
+
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:45px;
+
+    align-items:center;
+
+}
+
+.about-box{
+
+    padding:40px;
+
+    border-radius:27px;
+
+    background:
+    rgba(255,255,255,.045);
+
+    border:1px solid
+    rgba(255,255,255,.10);
+
+    backdrop-filter:blur(15px);
+
+    transition:.5s;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.about-box::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:200px;
+
+    height:200px;
+
+    background:#8b5cf6;
+
+    filter:blur(100px);
+
+    opacity:.12;
+
+    right:-100px;
+
+    top:-100px;
+
+}
+
+.about-box:hover{
+
+    transform:
+    translateY(-12px)
+    perspective(600px)
+    rotateX(2deg);
+
+    border-color:#8b5cf6;
+
+    box-shadow:
+    0 25px 60px rgba(139,92,246,.15);
+
+}
+
+.about-box h2{
+
+    font-size:36px;
+
+    margin-bottom:20px;
+
+}
+
+.about-box h2 span{
+
+    color:#ff4ecd;
+
+}
+
+.about-box p{
+
+    color:#b5afc1;
+
+    line-height:1.9;
+
+}
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:15px;
+
+}
+
+.stat{
+
+    text-align:center;
+
+    padding:30px 10px;
+
+    border-radius:22px;
+
+    background:
+    rgba(255,255,255,.045);
+
+    border:1px solid
+    rgba(255,255,255,.1);
+
+    transition:.5s;
+
+}
+
+.stat:hover{
+
+    transform:
+    translateY(-12px)
+    scale(1.04);
+
+}
+
+.stat h3{
+
+    font-size:38px;
+
+}
+
+.stat:nth-child(1) h3{
+    color:#a78bfa;
+}
+
+.stat:nth-child(2) h3{
+    color:#ff70d7;
+}
+
+.stat:nth-child(3) h3{
+    color:#ffb15c;
+}
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+
+}
+
+.card{
+
+    padding:32px;
+
+    border-radius:25px;
+
+    background:
+    rgba(255,255,255,.045);
+
+    border:1px solid
+    rgba(255,255,255,.1);
+
+    backdrop-filter:blur(15px);
+
+    transition:.5s;
+
+    position:relative;
+
+    overflow:hidden;
+
+    opacity:0;
+
+    transform:translateY(50px);
+
+}
+
+.card.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+.card::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:150px;
+
+    height:150px;
+
+    border-radius:50%;
+
+    filter:blur(60px);
+
+    opacity:.22;
+
+    top:-80px;
+
+    right:-80px;
+
+    background:#8b5cf6;
+
+    transition:.5s;
+
+}
+
+.card:nth-child(2)::before{
+    background:#ff4ecd;
+}
+
+.card:nth-child(3)::before{
+    background:#00d4ff;
+}
+
+.card:nth-child(4)::before{
+    background:#ff9f43;
+}
+
+.card:hover{
+
+    transform:
+    translateY(-15px)
+    scale(1.025);
+
+    box-shadow:
+    0 25px 60px rgba(0,0,0,.4);
+
+}
+
+.card:hover::before{
+
+    transform:
+    scale(1.7);
+
+    opacity:.35;
+
+}
+
+.icon{
+
+    font-size:45px;
+
+    margin-bottom:18px;
+
+    display:inline-block;
+
+    animation:iconFloat 3s infinite ease-in-out;
+
+}
+
+@keyframes iconFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-7px);
+    }
+
+}
+
+.card h3{
+
+    margin-bottom:12px;
+
+}
+
+.card p{
+
+    color:#aaa4b5;
+
+    line-height:1.7;
+
+}
+
+/* =========================================================
+   LEARNING JOURNEY
+========================================================= */
+
+.timeline{
+
+    max-width:900px;
+
+    margin:auto;
+
+    position:relative;
+
+}
+
+.timeline::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+
+    top:0;
+    bottom:0;
+
+    width:2px;
+
+    background:
+    linear-gradient(
+        #8b5cf6,
+        #ff4ecd,
+        #ff9f43
+    );
+
+    transform:translateX(-50%);
+
+}
+
+.timeline-item{
+
+    width:50%;
+
+    padding:25px 45px;
+
+    position:relative;
+
+    opacity:0;
+
+    transition:1s;
+
+}
+
+.timeline-item.show{
+
+    opacity:1;
+
+}
+
+.timeline-item:nth-child(odd){
+
+    left:0;
+
+    text-align:right;
+
+    transform:translateX(-50px);
+
+}
+
+.timeline-item:nth-child(even){
+
+    left:50%;
+
+    transform:translateX(50px);
+
+}
+
+.timeline-item.show{
+
+    transform:translateX(0);
+
+}
+
+.timeline-content{
+
+    padding:25px;
+
+    border-radius:20px;
+
+    background:
+    rgba(255,255,255,.05);
+
+    border:
+    1px solid rgba(255,255,255,.1);
+
+    backdrop-filter:blur(15px);
+
+    transition:.4s;
+
+}
+
+.timeline-content:hover{
+
+    transform:scale(1.04);
+
+    border-color:#ff4ecd;
+
+}
+
+.timeline-dot{
+
+    position:absolute;
+
+    top:40px;
+
+    width:17px;
+
+    height:17px;
+
+    border-radius:50%;
+
+    background:#ff4ecd;
+
+    box-shadow:
+    0 0 20px #ff4ecd;
+
+}
+
+.timeline-item:nth-child(odd)
+.timeline-dot{
+
+    right:-8px;
+
+}
+
+.timeline-item:nth-child(even)
+.timeline-dot{
+
+    left:-8px;
+
+}
+
+.timeline-content h3{
+
+    color:#ff70d7;
+
+    margin-bottom:8px;
+
+}
+
+.timeline-content p{
+
+    color:#aaa;
+
+    line-height:1.6;
+
+}
+
+/* =========================================================
+   WHY US
+========================================================= */
+
+.why-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:25px;
+
+}
+
+.why{
+
+    text-align:center;
+
+    padding:40px 25px;
+
+    border-radius:25px;
+
+    background:
+    linear-gradient(
+        145deg,
+        rgba(139,92,246,.08),
+        rgba(255,255,255,.03)
+    );
+
+    border:1px solid rgba(255,255,255,.1);
+
+    transition:.5s;
+
+}
+
+.why:hover{
+
+    transform:
+    translateY(-12px)
+    rotateX(5deg);
+
+    border-color:#ff4ecd;
+
+}
+
+.why-number{
+
+    font-size:55px;
+
+    font-weight:900;
+
+    background:
+    linear-gradient(
+        135deg,
+        #8b5cf6,
+        #ff4ecd
+    );
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+}
+
+.why h3{
+
+    margin:15px 0 10px;
+
+}
+
+.why p{
+
+    color:#aaa;
+
+    line-height:1.7;
+
+}
+
+/* =========================================================
+   LOCATION
+========================================================= */
+
+.location{
+
+    text-align:center;
+
+}
+
+.location-box{
+
+    max-width:800px;
+
+    margin:auto;
+
+    padding:45px;
+
+    border-radius:30px;
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(139,92,246,.08),
+        rgba(255,78,205,.07),
+        rgba(255,159,67,.06)
+    );
+
+    border:1px solid
+    rgba(255,255,255,.1);
+
+    backdrop-filter:blur(15px);
+
+    transition:.5s;
+
+}
+
+.location-box:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:
+    0 30px 60px rgba(139,92,246,.12);
+
+}
+
+.location-box h3{
+
+    font-size:28px;
+
+    margin-bottom:15px;
+
+}
+
+.location-box p{
+
+    color:#aaa4b5;
+
+    line-height:1.8;
+
+}
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact{
+
+    text-align:center;
+
+}
+
+.phone{
+
+    display:inline-block;
+
+    margin-top:20px;
+
+    padding:18px 32px;
+
+    border-radius:15px;
+
+    text-decoration:none;
+
+    color:white;
+
+    font-weight:700;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ff9f43,
+        #ff4ecd
+    );
+
+    transition:.4s;
+
+    position:relative;
+
+}
+
+.phone:hover{
+
+    transform:
+    scale(1.08)
+    translateY(-5px);
+
+    box-shadow:
+    0 0 40px rgba(255,78,205,.45);
+
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+
+    padding:55px 20px;
+
+    text-align:center;
+
+    border-top:
+    1px solid rgba(255,255,255,.08);
+
+    color:#817b8d;
+
+    position:relative;
+
+}
+
+.creator{
+
+    display:inline-block;
+
+    margin-top:18px;
+
+    font-size:21px;
+
+    font-weight:900;
+
+    letter-spacing:2px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #8b5cf6,
+        #ff4ecd,
+        #ff9f43,
+        #ffd166,
+        #8b5cf6
+    );
+
+    background-size:500% 100%;
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+
+    animation:
+    creatorGradient 5s linear infinite,
+    creatorFloat 2s ease-in-out infinite,
+    creatorGlow 2s infinite alternate;
+
+}
+
+@keyframes creatorGradient{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    100%{
+        background-position:500% 50%;
+    }
+
+}
+
+@keyframes creatorFloat{
+
+    0%,100%{
+        transform:translateY(0) scale(1);
+    }
+
+    50%{
+        transform:translateY(-8px) scale(1.04);
+    }
+
+}
+
+@keyframes creatorGlow{
+
+    from{
+        filter:drop-shadow(
+            0 0 0 transparent
+        );
+    }
+
+    to{
+        filter:drop-shadow(
+            0 0 12px rgba(255,78,205,.6)
+        );
+    }
+
+}
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+#topBtn{
+
+    position:fixed;
+
+    right:25px;
+    bottom:25px;
+
+    width:50px;
+    height:50px;
+
+    border:none;
+
+    border-radius:50%;
+
+    color:white;
+
+    background:
+    linear-gradient(
+        135deg,
+        #8b5cf6,
+        #ff4ecd
+    );
+
+    cursor:pointer;
+
+    font-size:20px;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.4s;
+
+    z-index:900;
+
+}
+
+#topBtn.show{
+
+    opacity:1;
+
+    pointer-events:auto;
+
+}
+
+#topBtn:hover{
+
+    transform:
+    translateY(-5px)
+    scale(1.1);
+
+    box-shadow:
+    0 0 25px rgba(255,78,205,.4);
+
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:900px){
+
+    .hero{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+    .buttons{
+
+        justify-content:center;
+
+    }
+
+    .hero-card{
+
+        width:100%;
+
+        max-width:390px;
+
+    }
+
+    .about{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .why-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .timeline::before{
+
+        left:10px;
+
+    }
+
+    .timeline-item{
+
+        width:100%;
+
+        left:0 !important;
+
+        text-align:left !important;
+
+        padding-left:45px;
+
+        padding-right:0;
+
+        transform:translateX(50px) !important;
+
+    }
+
+    .timeline-item.show{
+
+        transform:translateX(0) !important;
+
+    }
+
+    .timeline-item .timeline-dot{
+
+        left:2px !important;
+
+        right:auto !important;
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    nav{
+
+        padding:14px 4%;
+
+    }
+
+    .logo{
+
+        font-size:20px;
+
+    }
+
+    nav ul{
+
+        gap:8px;
+
+    }
+
+    nav ul li a{
+
+        font-size:8px;
+
+    }
+
+    section{
+
+        padding:80px 5%;
+
+    }
+
+    .hero{
+
+        padding:
+        130px 5% 80px;
+
+    }
+
+    .hero h1{
+
+        font-size:43px;
+
+    }
+
+    .hero-card{
+
+        min-height:390px;
+
+    }
+
+    .stats{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .section-title h2{
+
+        font-size:35px;
+
+    }
+
+}
+
+/* =========================================================
+   SELECTION
+========================================================= */
+
+::selection{
+
+    background:#ff4ecd;
+
+    color:white;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- =====================================================
+     LOADER
+===================================================== -->
+
+<div class="loader" id="loader">
+
+    <div class="loader-logo">
+        S&S
+    </div>
+
+    <p>
+        LOADING STUDY POINT
+    </p>
+
+    <div class="loader-line"></div>
+
+</div>
+
+
+<!-- BACKGROUND -->
+
+<div class="grid-background"></div>
+
+<div class="particles" id="particles"></div>
+
+<div class="cursor-glow" id="cursorGlow"></div>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav id="navbar">
+
+    <div class="logo">
+
+        S <span>&</span> S
+
+    </div>
+
+    <ul>
+
+        <li>
+            <a href="#home">Home</a>
+        </li>
+
+        <li>
+            <a href="#about">About</a>
+        </li>
+
+        <li>
+            <a href="#facilities">Facilities</a>
+        </li>
+
+        <li>
+            <a href="#subjects">Subjects</a>
+        </li>
+
+        <li>
+            <a href="#journey">Journey</a>
+        </li>
+
+        <li>
+            <a href="photos.html">Photos</a>
+        </li>
+
+        <li>
+            <a href="#contact">Contact</a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero" id="home">
+
+    <div class="hero-text">
+
+        <div class="small-title">
+            ✦ ICSE COACHING CENTER ✦
+        </div>
+
+        <h1>
+
+            S and S Study Point
+
+            <br>
+
+            <span id="typing"></span>
+
+        </h1>
+
+        <p>
+
+            A modern learning center focused on strong
+            concepts, practical learning, technology and
+            academic excellence for ICSE students.
+
+        </p>
+
+        <div class="buttons">
+
+            <a
+                href="#about"
+                class="btn primary">
+
+                Explore Center
+
+            </a>
+
+            <a
+                href="photos.html"
+                class="btn secondary">
+
+                View Photos →
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-card">
+
+        <div class="logo-circle">
+
+            <span>S&S</span>
+
+        </div>
+
+        <h2>
+            S & S Study Point
+        </h2>
+
+        <p>
+            Learn • Understand • Achieve
+        </p>
+
+        <div class="chips">
+
+            <div class="chip">
+                ICSE
+            </div>
+
+            <div class="chip">
+                Classes 1–10
+            </div>
+
+            <div class="chip">
+                Maths
+            </div>
+
+            <div class="chip">
+                Science
+            </div>
+
+            <div class="chip">
+                Technology
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section id="about">
+
+    <div class="section-title reveal">
+
+        <h2>
+            About Us
+        </h2>
+
+        <p>
+            Learning with concepts, technology and practical knowledge.
+        </p>
+
+    </div>
+
+    <div class="about">
+
+        <div class="about-box reveal">
+
+            <h2>
+
+                Meet
+                <span>
+                    Hareram Pandey
+                </span>
+
+            </h2>
+
+            <p>
+
+                S and S Study Point is an ICSE-focused
+                coaching center located at Nai Bazar,
+                Buxar, Bihar.
+
+                The center provides education for
+                students from Classes 1 to 10.
+
+            </p>
+
+            <br>
+
+            <p>
+
+                Students learn through clear explanations,
+                practical activities and modern technology.
+
+            </p>
+
+        </div>
+
+
+        <div class="stats">
+
+            <div class="stat reveal">
+
+                <h3 data-target="100">
+                    0+
+                </h3>
+
+                <p>
+                    Students
+                </p>
+
+            </div>
+
+            <div class="stat reveal">
+
+                <h3 data-target="10">
+                    0+
+                </h3>
+
+                <p>
+                    Computers
+                </p>
+
+            </div>
+
+            <div class="stat reveal">
+
+                <h3>
+                    1–10
+                </h3>
+
+                <p>
+                    Classes
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FACILITIES
+===================================================== -->
+
+<section id="facilities">
+
+    <div class="section-title reveal">
+
+        <h2>
+            Our Facilities
+        </h2>
+
+        <p>
+            Modern facilities for better learning.
+        </p>
+
+    </div>
+
+
+    <div class="cards">
+
+        <div class="card reveal">
+
+            <div class="icon">
+                💻
+            </div>
+
+            <h3>
+                Computer Lab
+            </h3>
+
+            <p>
+
+                More than 10 computers are available
+                for technology and computer learning.
+
+            </p>
+
+        </div>
+
+
+        <div class="card reveal">
+
+            <div class="icon">
+                🧪
+            </div>
+
+            <h3>
+                Chemistry Experiments
+            </h3>
+
+            <p>
+
+                Students understand chemistry through
+                practical experiments and demonstrations.
+
+            </p>
+
+        </div>
+
+
+        <div class="card reveal">
+
+            <div class="icon">
+                🔬
+            </div>
+
+            <h3>
+                Microscope
+            </h3>
+
+            <p>
+
+                Microscopic observation helps students
+                understand biological concepts practically.
+
+            </p>
+
+        </div>
+
+
+        <div class="card reveal">
+
+            <div class="icon">
+                📺
+            </div>
+
+            <h3>
+                Smart Board
+            </h3>
+
+            <p>
+
+                Interactive smart-board teaching makes
+                lessons visual and easier to understand.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SUBJECTS
+===================================================== -->
+
+<section id="subjects">
+
+    <div class="section-title reveal">
+
+        <h2>
+            Subjects
+        </h2>
+
+        <p>
+            Strong foundations in important academic subjects.
+        </p>
+
+    </div>
+
+
+    <div class="cards">
+
+        <div class="card reveal">
+
+            <div class="icon">
+                📐
+            </div>
+
+            <h3>
+                Mathematics
+            </h3>
+
+            <p>
+
+                Build mathematical concepts,
+                problem-solving ability and logical thinking.
+
+            </p>
+
+        </div>
+
+
+        <div class="card reveal">
+
+            <div class="icon">
+                🔬
+            </div>
+
+            <h3>
+                Science
+            </h3>
+
+            <p>
+
+                Learn Physics, Chemistry and Biology
+                through concepts and practical examples.
+
+            </p>
+
+        </div>
+
+
+        <div class="card reveal">
+
+            <div class="icon">
+                📖
+            </div>
+
+            <h3>
+                English
+            </h3>
+
+            <p>
+
+                Improve grammar, vocabulary,
+                literature and communication skills.
+
+            </p>
+
+        </div>
+
+
+        <div class="card reveal">
+
+            <div class="icon">
+                🌍
+            </div>
+
+            <h3>
+                Social Studies
+            </h3>
+
+            <p>
+
+                Understand History, Civics and Geography
+                through clear explanations.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     LEARNING JOURNEY
+===================================================== -->
+
+<section id="journey">
+
+    <div class="section-title reveal">
+
+        <h2>
+            Learning Journey
+        </h2>
+
+        <p>
+            A simple path from understanding to achievement.
+        </p>
+
+    </div>
+
+
+    <div class="timeline">
+
+
+        <div class="timeline-item reveal">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-content">
+
+                <h3>
+                    01 — Understand
+                </h3>
+
+                <p>
+
+                    Students first understand the basic
+                    concept instead of simply memorising it.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item reveal">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-content">
+
+                <h3>
+                    02 — Practice
+                </h3>
+
+                <p>
+
+                    Concepts are strengthened through
+                    questions, activities and exercises.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item reveal">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-content">
+
+                <h3>
+                    03 — Apply
+                </h3>
+
+                <p>
+
+                    Students apply their knowledge to
+                    practical examples and problems.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item reveal">
+
+            <div class="timeline-dot"></div>
+
+            <div class="timeline-content">
+
+                <h3>
+                    04 — Achieve
+                </h3>
+
+                <p>
+
+                    Regular practice and revision help
+                    students prepare for examinations.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     WHY CHOOSE US
+===================================================== -->
+
+<section>
+
+    <div class="section-title reveal">
+
+        <h2>
+            Why S & S?
+        </h2>
+
+        <p>
+            A learning environment designed around students.
+        </p>
+
+    </div>
+
+
+    <div class="why-grid">
+
+
+        <div class="why reveal">
+
+            <div class="why-number">
+                01
+            </div>
+
+            <h3>
+                Concept Based
+            </h3>
+
+            <p>
+
+                Focus on understanding concepts
+                instead of only memorising answers.
+
+            </p>
+
+        </div>
+
+
+        <div class="why reveal">
+
+            <div class="why-number">
+                02
+            </div>
+
+            <h3>
+                Practical Learning
+            </h3>
+
+            <p>
+
+                Experiments and activities make
+                difficult concepts easier to understand.
+
+            </p>
+
+        </div>
+
+
+        <div class="why reveal">
+
+            <div class="why-number">
+                03
+            </div>
+
+            <h3>
+                Technology
+            </h3>
+
+            <p>
+
+                Computers and smart-board teaching
+                add a modern approach to learning.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     LOCATION
+===================================================== -->
+
+<section>
+
+    <div class="location">
+
+        <div class="section-title reveal">
+
+            <h2>
+                Our Location
+            </h2>
+
+            <p>
+                Visit S and S Study Point.
+            </p>
+
+        </div>
+
+
+        <div class="location-box reveal">
+
+            <h3>
+                📍 Nai Bazar, Buxar
+            </h3>
+
+            <p>
+
+                KK Mandal Road
+                <br>
+
+                Nai Bazar, Buxar
+                <br>
+
+                Bihar, India
+
+            </p>
+
+            <br>
+
+            <a
+                href="https://www.google.com/maps/search/?api=1&query=S%20and%20S%20Study%20Point%20Nai%20Bazar%20Buxar"
+                target="_blank"
+                class="btn primary">
+
+                Open in Google Maps
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CONTACT
+===================================================== -->
+
+<section id="contact">
+
+    <div class="contact">
+
+        <div class="section-title reveal">
+
+            <h2>
+                Contact Us
+            </h2>
+
+            <p>
+                For admission and further information.
+            </p>
+
+        </div>
+
+
+        <a
+            href="tel:+918709220137"
+            class="phone">
+
+            📞 +91 870 922 0137
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <p>
+        © 2026 S & S Study Point. All Rights Reserved.
+    </p>
+
+    <div class="creator">
+
+        ✦ Created by Tanishk Kumar ✦
+
+    </div>
+
+</footer>
+
+
+<!-- BACK TO TOP -->
+
+<button id="topBtn">
+    ↑
+</button>
+
+
+<script>
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+window.addEventListener("load",function(){
+
+    setTimeout(function(){
+
+        document.getElementById("loader").style.opacity="0";
+
+        setTimeout(function(){
+
+            document.getElementById("loader").style.display="none";
+
+        },1000);
+
+    },1200);
+
+});
+
+
+/* =========================================================
+   TYPING EFFECT
+========================================================= */
+
+const text="Coaching Center";
+
+const typing=document.getElementById("typing");
+
+let i=0;
+
+function typeText(){
+
+    if(i<text.length){
+
+        typing.textContent+=text.charAt(i);
+
+        i++;
+
+        setTimeout(typeText,100);
+
+    }
+
+}
+
+typeText();
+
+
+/* =========================================================
+   PARTICLES
+========================================================= */
+
+const particleContainer=
+document.getElementById("particles");
+
+for(let i=0;i<45;i++){
+
+    const particle=
+    document.createElement("div");
+
+    particle.classList.add("particle");
+
+    particle.style.left=
+    Math.random()*100+"%";
+
+    particle.style.animationDuration=
+    (6+Math.random()*12)+"s";
+
+    particle.style.animationDelay=
+    Math.random()*10+"s";
+
+    particle.style.opacity=
+    Math.random()*.5;
+
+    particleContainer.appendChild(particle);
+
+}
+
+
+/* =========================================================
+   CURSOR GLOW
+========================================================= */
+
+const cursorGlow=
+document.getElementById("cursorGlow");
+
+document.addEventListener("mousemove",function(e){
+
+    cursorGlow.style.left=e.clientX+"px";
+
+    cursorGlow.style.top=e.clientY+"px";
+
+});
+
+
+/* =========================================================
+   NAVBAR SCROLL
+========================================================= */
+
+const navbar=
+document.getElementById("navbar");
+
+window.addEventListener("scroll",function(){
+
+    if(window.scrollY>50){
+
+        navbar.classList.add("scrolled");
+
+    }else{
+
+        navbar.classList.remove("scrolled");
+
+    }
+
+});
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const reveals=
+document.querySelectorAll(".reveal");
+
+const observer=
+new IntersectionObserver(
+
+    function(entries){
+
+        entries.forEach(function(entry){
+
+            if(entry.isIntersecting){
+
+                entry.target.classList.add("show");
+
+            }
+
+        });
+
+    },
+
+    {
+        threshold:.15
+    }
+
+);
+
+reveals.forEach(function(element){
+
+    observer.observe(element);
+
+});
+
+
+/* =========================================================
+   COUNTER ANIMATION
+========================================================= */
+
+const counters=
+document.querySelectorAll("[data-target]");
+
+const counterObserver=
+new IntersectionObserver(
+
+    function(entries){
+
+        entries.forEach(function(entry){
+
+            if(entry.isIntersecting){
+
+                const counter=
+                entry.target;
+
+                const target=
+                +counter.getAttribute("data-target");
+
+                let count=0;
+
+                const speed=20;
+
+                const update=()=>{
+
+                    if(count<target){
+
+                        count++;
+
+                        counter.innerText=
+                        count+"+";
+
+                        setTimeout(update,speed);
+
+                    }else{
+
+                        counter.innerText=
+                        target+"+";
+
+                    }
+
+                };
+
+                update();
+
+                counterObserver.unobserve(counter);
+
+            }
+
+        });
+
+    },
+
+    {
+        threshold:.7
+    }
+
+);
+
+counters.forEach(function(counter){
+
+    counterObserver.observe(counter);
+
+});
+
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+const topBtn=
+document.getElementById("topBtn");
+
+window.addEventListener("scroll",function(){
+
+    if(window.scrollY>500){
+
+        topBtn.classList.add("show");
+
+    }else{
+
+        topBtn.classList.remove("show");
+
+    }
+
+});
+
+topBtn.addEventListener("click",function(){
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+    });
+
+});
+
+
+/* =========================================================
+   3D HERO CARD MOUSE EFFECT
+========================================================= */
+
+const heroCard=
+document.querySelector(".hero-card");
+
+document.addEventListener("mousemove",function(e){
+
+    if(window.innerWidth>900){
+
+        const x=
+        (window.innerWidth/2-e.clientX)/35;
+
+        const y=
+        (window.innerHeight/2-e.clientY)/35;
+
+        heroCard.style.transform=
+        `rotateY(${x}deg) rotateX(${y}deg)`;
+
+    }
+
+});
+
+document.addEventListener("mouseleave",function(){
+
+    heroCard.style.transform=
+    "rotateY(0deg) rotateX(0deg)";
+
+});
+
+
+/* =========================================================
+   BUTTON RIPPLE EFFECT
+========================================================= */
+
+document.querySelectorAll(".btn").forEach(function(button){
+
+    button.addEventListener("click",function(e){
+
+        const ripple=
+        document.createElement("span");
+
+        ripple.style.position="absolute";
+
+        ripple.style.width="10px";
+
+        ripple.style.height="10px";
+
+        ripple.style.borderRadius="50%";
+
+        ripple.style.background=
+        "rgba(255,255,255,.4)";
+
+        ripple.style.left=
+        e.offsetX+"px";
+
+        ripple.style.top=
+        e.offsetY+"px";
+
+        ripple.style.transform=
+        "translate(-50%,-50%)";
+
+        ripple.style.pointerEvents="none";
+
+        button.appendChild(ripple);
+
+        setTimeout(function(){
+
+            ripple.remove();
+
+        },600);
+
+    });
+
+});
+
+
+/* =========================================================
+   ACTIVE NAVIGATION
+========================================================= */
+
+const sections=
+document.querySelectorAll("section[id]");
+
+const navLinks=
+document.querySelectorAll("nav a");
+
+window.addEventListener("scroll",function(){
+
+    let current="";
+
+    sections.forEach(function(section){
+
+        const sectionTop=
+        section.offsetTop-150;
+
+        if(window.scrollY>=sectionTop){
+
+            current=
+            section.getAttribute("id");
+
+        }
+
+    });
+
+    navLinks.forEach(function(link){
+
+        link.style.color="#ccc";
+
+        if(
+            link.getAttribute("href")===
+            "#"+current
+        ){
+
+            link.style.color="#ff4ecd";
+
+        }
+
+    });
+
+});
+
+
+/* =========================================================
+   RANDOM CARD TILT
+========================================================= */
+
+document.querySelectorAll(".card").forEach(function(card){
+
+    card.addEventListener("mousemove",function(e){
+
+        const rect=
+        card.getBoundingClientRect();
+
+        const x=
+        e.clientX-rect.left;
+
+        const y=
+        e.clientY-rect.top;
+
+        const centerX=
+        rect.width/2;
+
+        const centerY=
+        rect.height/2;
+
+        const rotateX=
+        (y-centerY)/18;
+
+        const rotateY=
+        (centerX-x)/18;
+
+        card.style.transform=
+        `perspective(700px)
+         rotateX(${rotateX}deg)
+         rotateY(${rotateY}deg)
+         translateY(-12px)
+         scale(1.02)`;
+
+    });
+
+    card.addEventListener("mouseleave",function(){
+
+        card.style.transform="";
+
+    });
+
+});
+
+</script>
+
+</body>
+
+</html>
